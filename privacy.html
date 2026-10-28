@@ -11,15 +11,21 @@
 <main>
   <p><a href="index.html">&larr; Tiny Learners</a></p>
   <h1>Privacy Policy</h1>
-  <p class="muted">Effective October 16, 2026</p>
+  <p class="muted">Effective October 28, 2026</p>
 
-  <p>This policy covers the Tiny Learners website and <strong>Tiny Learners Media</strong>, a desktop
-  application that the Tiny Learners creator runs on their own computer to upload their own videos to
-  their own YouTube channel and TikTok account.</p>
+  <p>This policy covers the Tiny Learners website and two desktop applications that the Tiny Learners
+  creator runs on their own computer:</p>
+  <ul>
+    <li><strong>Tiny Learners Media</strong> uploads the creator's own videos to their own YouTube channel
+    and TikTok account.</li>
+    <li><strong>Local Email Bridge</strong> lets the creator use the Claude AI assistant to search, read,
+    draft and send email in their own Gmail accounts.</li>
+  </ul>
 
-  <h2>Who uses the app</h2>
-  <p>The app is used only by the Tiny Learners creator. It is not distributed to the public, and it
-  does not collect personal information from viewers, children or other users.</p>
+  <h2>Who uses the apps</h2>
+  <p>The apps are used only by the Tiny Learners creator, with accounts the creator owns. They are not
+  distributed to the public, and they do not collect personal information from viewers, children or
+  other users.</p>
 
   <h2>What data the app accesses</h2>
   <ul>
@@ -28,24 +34,38 @@
     and reads video files the owner selects from their own Google Drive.</li>
     <li><strong>TikTok:</strong> with the account owner's permission, the app reads basic profile info
     (display name and avatar) and uploads or publishes videos to the owner's TikTok account.</li>
+    <li><strong>Gmail (Local Email Bridge):</strong> with the account owner's permission, the app reads
+    messages and attachments in the owner's Gmail accounts, creates drafts, sends new messages and
+    replies, and marks a message as read after the owner replies to it. Every message is shown to the
+    owner in an on-screen confirmation and is sent only if the owner approves it.</li>
   </ul>
 
   <h2>How data is stored</h2>
-  <p>Sign-in tokens, settings and a history of uploads are stored only on the owner's computer. Video
+  <p>Sign-in tokens, settings, a history of uploads and a local copy of the owner's email are stored
+  only on the owner's computer. Sign-in tokens are kept encrypted in Windows Credential Manager. Video
   files are sent directly from that computer to YouTube or TikTok. We run no servers that receive or
-  store this data, and we do not sell, share or transfer it to anyone else.</p>
+  store this data, and we do not sell this data or use it for advertising.</p>
+
+  <h2>Use with the Claude AI assistant</h2>
+  <p>When the owner asks Claude, the AI assistant made by Anthropic, about their email, Local Email
+  Bridge passes the relevant messages to Claude so it can answer, draft or reply. No other Gmail data is
+  shared with Anthropic, and no Gmail data is shared with anyone else. Data shared with Claude is handled
+  under <a href="https://www.anthropic.com/legal/privacy">Anthropic's Privacy Policy</a>. Tiny Learners
+  does not use Gmail data to develop, improve or train AI or machine-learning models.</p>
 
   <h2>Google API Services</h2>
-  <p>Tiny Learners Media's use and transfer of information received from Google APIs adheres to the
+  <p>Tiny Learners Media's and Local Email Bridge's use and transfer of information received from Google
+  APIs adheres to the
   <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User
-  Data Policy</a>, including the Limited Use requirements. Google user data is used only to provide
-  the upload features described above.</p>
+  Data Policy</a>, including the Limited Use requirements. Google user data is used only to provide the
+  features described above to the account owner.</p>
 
   <h2>Removing access</h2>
   <p>Access can be revoked at any time from
   <a href="https://myaccount.google.com/permissions">Google Account permissions</a> or from the TikTok
-  app under Settings &rarr; Security &rarr; Manage app permissions. Deleting the app's local data folder
-  removes all stored tokens and history.</p>
+  app under Settings &rarr; Security &rarr; Manage app permissions. Deleting an app's local data folder
+  removes its stored history and email copy. Local Email Bridge sign-ins are removed with its
+  <code>forget</code> command or from Windows Credential Manager.</p>
 
   <h2>Contact</h2>
   <p>Questions: <a href="mailto:tinylearnerscreator@gmail.com">tinylearnerscreator@gmail.com</a></p>
