@@ -162,7 +162,21 @@ footer p{margin:0;font-size:14px}
   <div class="ledge"></div>
 </header>
 
-<div class="bar" role="region" aria-label="Filter books">
+<main>
+  <div class="wrap">
+    <section aria-labelledby="bundle-h" style="padding-top:0">
+      <div class="bundle">
+        <div class="stack" aria-hidden="true">{{BUNDLE_COVERS}}</div>
+        <div>
+          <h2 id="bundle-h">{{BUNDLE_TITLE}}</h2>
+          <p>{{BUNDLE_DETAIL}}</p>
+        </div>
+        <a class="pill" href="{{BUNDLE_URL}}" target="_blank" rel="noopener" aria-label="Get the Christmas Activity Bundle printable PDF on Etsy, {{BUNDLE_PRICE}}">Get the bundle, {{BUNDLE_PRICE}}</a>
+      </div>
+    </section>
+  </div>
+
+<div class="bar" id="bar" role="region" aria-label="Filter books">
   <div class="wrap">
     <div class="row" id="kinds">{{CHIPS}}</div>
     <div class="row">
@@ -176,19 +190,7 @@ footer p{margin:0;font-size:14px}
   </div>
 </div>
 
-<main>
   <div class="wrap">
-    <section aria-labelledby="bundle-h" style="padding-top:0">
-      <div class="bundle">
-        <div class="stack" aria-hidden="true">{{BUNDLE_COVERS}}</div>
-        <div>
-          <h2 id="bundle-h">{{BUNDLE_TITLE}}</h2>
-          <p>{{BUNDLE_DETAIL}}</p>
-        </div>
-        <a class="pill" href="{{BUNDLE_URL}}" target="_blank" rel="noopener" aria-label="Get the Christmas Activity Bundle printable PDF on Etsy, {{BUNDLE_PRICE}}">Get the bundle, {{BUNDLE_PRICE}}</a>
-      </div>
-    </section>
-
     <section id="books" aria-labelledby="books-h">
       <div class="sec-h">
         <h2 id="books-h">All books</h2>
@@ -263,11 +265,19 @@ footer p{margin:0;font-size:14px}
       if(p) p.hidden = fmt==='print'; if(r) r.hidden = fmt==='paperback';
     });
     count.textContent = n + (n===1?' book':' books');
+    var kl=document.querySelector('#kinds .chip[aria-pressed=true]'), fl=document.querySelector('#fmts .chip[aria-pressed=true]');
+    var t=(kl&&kind!=='all')?kl.textContent.trim():'All books';
+    if(fmt==='paperback')t+=' · Paperback'; else if(fmt==='print')t+=' · Printable';
+    document.getElementById('books-h').textContent=t;
     empty.hidden = n>0;
   }
+  function showResults(){
+    var bar=document.getElementById('bar'), top=bar.getBoundingClientRect().top;
+    if(top<0||top>window.innerHeight*0.5){bar.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
+  }
   function pick(btns,btn){btns.forEach(function(b){b.setAttribute('aria-pressed', b===btn?'true':'false')})}
-  kindBtns.forEach(function(b){b.addEventListener('click',function(){kind=b.dataset.filter;pick(kindBtns,b);apply()})});
-  fmtBtns.forEach(function(b){b.addEventListener('click',function(){fmt=b.dataset.format;pick(fmtBtns,b);apply()})});
+  kindBtns.forEach(function(b){b.addEventListener('click',function(){kind=b.dataset.filter;pick(kindBtns,b);apply();showResults()})});
+  fmtBtns.forEach(function(b){b.addEventListener('click',function(){fmt=b.dataset.format;pick(fmtBtns,b);apply();showResults()})});
   document.getElementById('reset').addEventListener('click',function(){
     kind='all';fmt='any';pick(kindBtns,kindBtns[0]);pick(fmtBtns,fmtBtns[0]);apply();
   });

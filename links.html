@@ -162,7 +162,21 @@ footer p{margin:0;font-size:14px}
   <div class="ledge"></div>
 </header>
 
-<div class="bar" role="region" aria-label="Filter books">
+<main>
+  <div class="wrap">
+    <section aria-labelledby="bundle-h" style="padding-top:0">
+      <div class="bundle">
+        <div class="stack" aria-hidden="true"><img class="bc" src="img/books/xmas-coloring.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"><img class="bc" src="img/books/xmas-maze.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"><img class="bc" src="img/books/xmas-word-search.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"></div>
+        <div>
+          <h2 id="bundle-h">Christmas Activity Bundle</h2>
+          <p>Coloring, mazes and word search in one download. 3 printable books, 280+ pages, ages 2 to 8.</p>
+        </div>
+        <a class="pill" href="https://www.etsy.com/listing/4613934988" target="_blank" rel="noopener" aria-label="Get the Christmas Activity Bundle printable PDF on Etsy, $12.99">Get the bundle, $12.99</a>
+      </div>
+    </section>
+  </div>
+
+<div class="bar" id="bar" role="region" aria-label="Filter books">
   <div class="wrap">
     <div class="row" id="kinds"><button type="button" class="chip" data-filter="all" aria-pressed="true">All books</button><button type="button" class="chip" data-filter="t:christmas" aria-pressed="false">Christmas</button><button type="button" class="chip" data-filter="k:coloring" aria-pressed="false">Coloring</button><button type="button" class="chip" data-filter="k:mazes" aria-pressed="false">Mazes</button><button type="button" class="chip" data-filter="k:wordsearch" aria-pressed="false">Word search</button><button type="button" class="chip" data-filter="k:search" aria-pressed="false">Search and find</button><button type="button" class="chip" data-filter="k:comics" aria-pressed="false">Comics</button></div>
     <div class="row">
@@ -176,19 +190,7 @@ footer p{margin:0;font-size:14px}
   </div>
 </div>
 
-<main>
   <div class="wrap">
-    <section aria-labelledby="bundle-h" style="padding-top:0">
-      <div class="bundle">
-        <div class="stack" aria-hidden="true"><img class="bc" src="img/books/xmas-coloring.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"><img class="bc" src="img/books/xmas-maze.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"><img class="bc" src="img/books/xmas-word-search.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"></div>
-        <div>
-          <h2 id="bundle-h">Christmas Activity Bundle</h2>
-          <p>Coloring, mazes and word search in one download. 3 printable books, 280+ pages, ages 2 to 8.</p>
-        </div>
-        <a class="pill" href="https://www.etsy.com/listing/4613934988" target="_blank" rel="noopener" aria-label="Get the Christmas Activity Bundle printable PDF on Etsy, $12.99">Get the bundle, $12.99</a>
-      </div>
-    </section>
-
     <section id="books" aria-labelledby="books-h">
       <div class="sec-h">
         <h2 id="books-h">All books</h2>
@@ -272,11 +274,19 @@ footer p{margin:0;font-size:14px}
       if(p) p.hidden = fmt==='print'; if(r) r.hidden = fmt==='paperback';
     });
     count.textContent = n + (n===1?' book':' books');
+    var kl=document.querySelector('#kinds .chip[aria-pressed=true]'), fl=document.querySelector('#fmts .chip[aria-pressed=true]');
+    var t=(kl&&kind!=='all')?kl.textContent.trim():'All books';
+    if(fmt==='paperback')t+=' · Paperback'; else if(fmt==='print')t+=' · Printable';
+    document.getElementById('books-h').textContent=t;
     empty.hidden = n>0;
   }
+  function showResults(){
+    var bar=document.getElementById('bar'), top=bar.getBoundingClientRect().top;
+    if(top<0||top>window.innerHeight*0.5){bar.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
+  }
   function pick(btns,btn){btns.forEach(function(b){b.setAttribute('aria-pressed', b===btn?'true':'false')})}
-  kindBtns.forEach(function(b){b.addEventListener('click',function(){kind=b.dataset.filter;pick(kindBtns,b);apply()})});
-  fmtBtns.forEach(function(b){b.addEventListener('click',function(){fmt=b.dataset.format;pick(fmtBtns,b);apply()})});
+  kindBtns.forEach(function(b){b.addEventListener('click',function(){kind=b.dataset.filter;pick(kindBtns,b);apply();showResults()})});
+  fmtBtns.forEach(function(b){b.addEventListener('click',function(){fmt=b.dataset.format;pick(fmtBtns,b);apply();showResults()})});
   document.getElementById('reset').addEventListener('click',function(){
     kind='all';fmt='any';pick(kindBtns,kindBtns[0]);pick(fmtBtns,fmtBtns[0]);apply();
   });
