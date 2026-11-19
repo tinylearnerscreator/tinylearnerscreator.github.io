@@ -15,8 +15,10 @@ KIND_LABEL = {"coloring": "Coloring", "mazes": "Mazes", "wordsearch": "Word sear
 books = d["books"]
 cover = {b["slug"]: b.get("cover") for b in books}
 
+from PIL import Image
 def cover_img(slug, alt="", cls=""):
-    return f'<img class="{cls}" src="img/books/{slug}.jpg" width="480" height="623" alt="{e(alt)}" loading="lazy" decoding="async">'
+    w, h = Image.open(root / "img" / "books" / f"{slug}.jpg").size
+    return f'<img class="{cls}" src="img/books/{slug}.jpg" width="{w}" height="{h}" style="aspect-ratio:{w}/{h}" alt="{e(alt)}" loading="lazy" decoding="async">'
 
 def card(b):
     fm = b["formats"]
@@ -35,6 +37,13 @@ def card(b):
         btns += (f'<a class="buy buy-{key}" href="{e(v["url"])}" target="_blank" rel="noopener" '
                  f'aria-label="{e(label)} of {e(b["title"])} on {store}, {e(v["price"])}">'
                  f'<span class="bl">{label}<small>{"PDF on Etsy" if key=="print" else "on "+store}</small></span><span class="bp">{e(v["price"])}</span></a>')
+    if len(fm) == 1:
+        v = next(iter(fm.values())); key = next(iter(fm))
+        art = (f'<a class="artlink" href="{e(v["url"])}" target="_blank" rel="noopener" '
+               f'aria-label="Buy {e(b["title"])} on {FORMAT_LABEL[key][1]}">{art}</a>')
+    else:
+        art = (f'<button type="button" class="artlink choose" aria-haspopup="dialog" '
+               f'aria-label="Choose where to buy {e(b["title"])}">{art}</button>')
     return (f'<li class="book" data-kind="{b["kind"]}" data-themes="{" ".join(b["themes"])}" data-formats="{f_attr}">'
             f'<div class="art">{art}{flag}</div>'
             f'<h3>{e(b["title"])}</h3>'

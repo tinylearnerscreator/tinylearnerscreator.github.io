@@ -109,6 +109,14 @@ section{padding:34px 0 8px}
 .meta{margin:0 0 10px;color:var(--muted);font-size:15px;line-height:1.4}
 .buys{display:grid;gap:8px}
 .buy{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:50px;padding:6px 14px;border-radius:12px;text-decoration:none;font:700 16px var(--display);line-height:1.15}
+.artlink{display:block;width:100%;padding:0;margin:0;border:0;background:none;cursor:pointer;color:inherit;border-radius:7px}
+.artlink:focus-visible,.buy:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+#pick{border:0;border-radius:18px;padding:20px;max-width:min(92vw,360px);width:100%;background:#fff;color:inherit;box-shadow:0 20px 60px #1f165480}
+#pick::backdrop{background:#1f165499}
+#pick h3{margin:0 0 4px;font:700 20px var(--display)}
+#pick p{margin:0 0 14px}
+#pick .buys{display:grid;gap:10px}
+#pick .x{margin-top:12px;width:100%;min-height:44px;border:0;border-radius:12px;background:#0000000d;font:600 16px var(--text);cursor:pointer}
 .buy small{display:block;font:600 12px var(--text);opacity:.8}
 .buy-paperback,.buy-hardcover,.buy-kindle{background:var(--btn);color:var(--btn-ink)}
 .buy-print{background:var(--sun);color:var(--sun-ink)}
@@ -242,6 +250,7 @@ footer p{margin:0;font-size:14px}
     <p>Made by Tiny Learners in Springfield, Ohio.</p>
   </div>
 </footer>
+<dialog id="pick" aria-labelledby="pick-t"><h3 id="pick-t"></h3><p>Choose where to buy.</p><div class="buys" id="pick-buys"></div><button type="button" class="x" id="pick-x">Close</button></dialog>
 
 <script>
 (function(){
@@ -282,6 +291,18 @@ footer p{margin:0;font-size:14px}
     kind='all';fmt='any';pick(kindBtns,kindBtns[0]);pick(fmtBtns,fmtBtns[0]);apply();
   });
 })();
+
+  var dlg=document.getElementById('pick');
+  [].forEach.call(document.querySelectorAll('.artlink.choose'),function(b){
+    b.addEventListener('click',function(){
+      var li=b.closest('.book'); document.getElementById('pick-t').textContent=li.querySelector('h3').textContent;
+      var box=document.getElementById('pick-buys'); box.innerHTML='';
+      [].forEach.call(li.querySelectorAll('.buy'),function(a){var c=a.cloneNode(true);c.hidden=false;box.appendChild(c)});
+      if(dlg.showModal)dlg.showModal(); else dlg.setAttribute('open','');
+    });
+  });
+  document.getElementById('pick-x').addEventListener('click',function(){dlg.close?dlg.close():dlg.removeAttribute('open')});
+  dlg.addEventListener('click',function(ev){if(ev.target===dlg&&dlg.close)dlg.close()});
 </script>
 </body>
 </html>

@@ -19,7 +19,7 @@
     {"id": "CJjJ49DmZKo", "title": "Christmas Coloring Book", "note": "Short"}
   ],
   "books": [
-    {"slug": "agent-chuck", "title": "Agent Chuck: Reply All", "kind": "comics", "themes": ["comics"], "ages": "7 and up", "detail": "96 page full color space adventure", "new": true, "cover": null,
+    {"slug": "agent-chuck", "title": "Agent Chuck: Reply All", "kind": "comics", "themes": ["comics"], "ages": "7 and up", "detail": "96 page full color space adventure", "new": true, "cover": "agent-chuck",
      "formats": {"print": {"url": "https://www.etsy.com/listing/4616712001", "price": "$7.99"}}},
     {"slug": "xmas-search-find", "title": "My First Christmas Search and Find", "kind": "search", "themes": ["christmas"], "ages": "3 to 5", "detail": "36 hidden picture puzzles", "new": true, "cover": "xmas-search-find",
      "formats": {"paperback": {"url": "https://www.amazon.com/dp/B0HRYKTGF6", "price": "$9.99"}, "print": {"url": "https://www.etsy.com/listing/4619001616", "price": "$6.99"}}},
