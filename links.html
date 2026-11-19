@@ -3,131 +3,284 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tiny Learners</title>
-<meta name="description" content="Free learning videos and $9.99 activity books for kids ages 2 to 6, starring Ellie the Elephant and Stella the Star.">
-<meta property="og:title" content="Tiny Learners: videos and books for kids 2 to 6">
-<meta property="og:description" content="Free YouTube learning videos, activity books on Amazon, and printable PDFs on Etsy.">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<title>Tiny Learners: activity books and videos for kids ages 1 to 8</title>
+<meta name="description" content="Coloring books, mazes, word searches, search and find puzzles and comics for kids ages 1 to 8, as paperbacks on Amazon or printable PDFs on Etsy. Plus free learning videos.">
+<meta property="og:title" content="Tiny Learners: activity books and videos for kids">
+<meta property="og:description" content="Paperbacks on Amazon, printable PDFs on Etsy, and free learning videos on YouTube.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tinylearnerscreator.github.io/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1f1654">
+<link rel="icon" href="https://yt3.googleusercontent.com/RKaXb0GFK94QQe6g370gl3TG7ZemWa3ppSqnndNb-00wYAyc5lWTYmpzx7sJsZKiynqfkNKZtw=s240-c-k-c0x00ffffff-no-rj">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#fff8ec; --ink:#2b2350; --muted:#5d5683; --card:#ffffff;
-  --yt:#e8473c; --amz:#f29d1f; --etsy:#f1641e; --purple:#6b4fd8; --line:#efe3cc;
+  --night:#1f1654; --night-2:#33229a; --sun:#ffc83d; --sun-ink:#3a2a00; --sun-edge:#d99a00;
+  --paper:#f6f3ff; --card:#ffffff; --ink:#221b4d; --muted:#5a5484; --line:#e0d8f6;
+  --btn:#5b3fd1; --btn-ink:#ffffff; --focus:#ff6a4d;
+  --display:"Fredoka","Trebuchet MS",system-ui,sans-serif; --text:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#140e36; --card:#221a52; --ink:#f4f0ff; --muted:#bdb5e6; --line:#372d73; --btn:#7059ea}
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;line-height:1.5}
-.wrap{max-width:560px;margin:0 auto;padding:40px 16px 56px}
-header{text-align:center;margin-bottom:28px}
-.badge{display:inline-block;width:84px;height:84px;border-radius:50%;background:var(--purple);color:#fff;
-  font:800 34px/84px "Baloo 2",sans-serif;box-shadow:0 6px 0 #4b35a3}
-h1{font:800 38px/1.1 "Baloo 2",sans-serif;margin:18px 0 6px}
-.tag{color:var(--muted);margin:0}
-h2{font:800 20px "Baloo 2",sans-serif;margin:32px 0 10px}
-a.btn{display:flex;align-items:center;gap:14px;padding:16px 18px;margin:10px 0;border-radius:16px;
-  background:var(--card);border:2px solid var(--line);color:var(--ink);text-decoration:none;font-weight:700;
-  transition:transform .12s, border-color .12s}
-a.btn:hover{transform:translateY(-2px);border-color:var(--purple)}
-.dot{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff;font:800 18px "Baloo 2",sans-serif}
-.yt{background:var(--yt)} .amz{background:var(--amz)} .etsy{background:var(--etsy)}
-.sub{display:block;font-weight:400;color:var(--muted);font-size:14px}
-.price{margin-left:auto;font-weight:800;color:var(--purple);white-space:nowrap}
-footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){--bg:#1b1733;--ink:#f6f1ff;--muted:#b8b0dc;--card:#26204a;--line:#3a3368}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--text);-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--sun);color:var(--sun-ink);padding:8px 14px;border-radius:8px;z-index:20;font-weight:800}
+.skip:focus{left:8px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;margin:0}
+.wrap{width:min(1080px,100% - 32px);margin-inline:auto}
+
+/* Hero: a night sky with the covers standing on a toy shelf */
+.hero{background:
+  radial-gradient(1.5px 1.5px at 12% 22%,#fff9 98%,#0000),radial-gradient(1.5px 1.5px at 82% 16%,#fff9 98%,#0000),
+  radial-gradient(2px 2px at 64% 38%,#fff8 98%,#0000),radial-gradient(1.5px 1.5px at 28% 52%,#fff7 98%,#0000),
+  radial-gradient(1.5px 1.5px at 92% 58%,#fff7 98%,#0000),radial-gradient(2px 2px at 6% 70%,#fff8 98%,#0000),
+  radial-gradient(120% 90% at 50% 0%,var(--night-2),var(--night) 70%);
+  color:#fff;padding:36px 0 0;position:relative;overflow:hidden}
+.hero .wrap{text-align:center}
+.hero h1{font-size:clamp(40px,9vw,72px);font-weight:700;letter-spacing:-.01em}
+.hero .lede{max-width:34ch;margin:12px auto 0;font-size:clamp(17px,2.6vw,21px);color:#e4defc}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:22px 0 0}
+.pill{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:999px;font:700 17px var(--display);text-decoration:none;
+  background:var(--sun);color:var(--sun-ink);box-shadow:0 3px 0 var(--sun-edge)}
+.pill.alt{background:#ffffff1f;color:#fff;box-shadow:inset 0 0 0 2px #ffffff55}
+.pill:hover{transform:translateY(-1px)}
+.shelf{list-style:none;margin:30px auto 0;padding:0 0 0;display:flex;justify-content:center;align-items:flex-end;position:relative;z-index:1}
+.shelf li{flex:none;margin-inline:-.5vw;transform:rotate(var(--r,0deg));transform-origin:50% 100%;
+  animation:rise .7s cubic-bezier(.2,.9,.3,1.2) both;animation-delay:calc(var(--i)*90ms)}
+.shelf li:nth-child(1){--r:-5deg;--i:0;z-index:1} .shelf li:nth-child(2){--r:-2.5deg;--i:1;z-index:2}
+.shelf li:nth-child(3){--r:0deg;--i:2;z-index:5} .shelf li:nth-child(4){--r:2.5deg;--i:3;z-index:2} .shelf li:nth-child(5){--r:5deg;--i:4;z-index:1}
+.shelf img{display:block;width:clamp(60px,17vw,176px);height:auto;border-radius:3px 6px 6px 3px;box-shadow:-3px 0 0 #0003 inset,0 8px 18px #0006}
+.shelf li:nth-child(3) img{width:clamp(78px,21vw,208px)}
+@keyframes rise{from{transform:translateY(70px) rotate(var(--r,0deg));opacity:0}to{transform:translateY(0) rotate(var(--r,0deg));opacity:1}}
+.ledge{height:26px;background:linear-gradient(var(--sun),#f0b21e);box-shadow:0 5px 0 var(--sun-edge),0 12px 22px #0004;position:relative;z-index:0;margin-top:-6px}
+
+/* Filters */
+.bar{position:relative;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 0}
+.bar .wrap{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.row::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:40px;padding:0 16px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:700 15px var(--text);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.seg{display:inline-flex;border:2px solid var(--line);border-radius:999px;background:var(--card);padding:2px;flex:none}
+.seg .chip{border:0;min-height:36px}
+.rowlabel{flex:none;align-self:center;font:700 14px var(--text);color:var(--muted)}
+
+@media(min-width:700px){.bar{position:sticky}}
+@media(max-width:560px){.shelf li:nth-child(1),.shelf li:nth-child(5){display:none}.shelf img{width:30vw}.shelf li:nth-child(3) img{width:38vw}.shelf li{margin-inline:-2vw}}
+
+/* Sections */
+section{padding:34px 0 8px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(26px,4.4vw,34px)}
+.count{color:var(--muted);font-size:15px;margin:0}
+
+/* Bundle */
+.bundle{display:grid;gap:18px;align-items:center;background:var(--night);color:#fff;border-radius:22px;padding:22px;margin-top:26px;
+  background-image:radial-gradient(1.5px 1.5px at 88% 20%,#fff9 98%,#0000),radial-gradient(2px 2px at 70% 78%,#fff8 98%,#0000)}
+.bundle .stack{display:flex;justify-content:center}
+.bundle .bc{width:min(30vw,128px);height:auto;border-radius:3px 6px 6px 3px;box-shadow:0 6px 14px #0007;margin-inline:-14px;transform:rotate(var(--r,0deg))}
+.bundle .bc:nth-child(1){--r:-6deg}.bundle .bc:nth-child(3){--r:6deg}.bundle .bc:nth-child(2){position:relative;z-index:1;transform:translateY(-6px)}
+.bundle h2{font-size:clamp(24px,4vw,32px)}
+.bundle p{margin:8px 0 14px;color:#e4defc;max-width:44ch}
+@media(min-width:700px){.bundle{grid-template-columns:auto 1fr auto;padding:26px 32px}.bundle .stack{justify-content:flex-start;padding-inline:14px}.bundle .bc{width:112px}}
+
+/* Book cards */
+.books{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:22px 14px}
+@media(min-width:640px){.books{grid-template-columns:repeat(3,1fr);gap:28px 20px}}
+@media(min-width:900px){.books{grid-template-columns:repeat(4,1fr)}}
+.book[hidden]{display:none}
+.art{position:relative;margin-bottom:12px}
+.cv{display:block;width:100%;height:auto;aspect-ratio:480/623;border-radius:3px 7px 7px 3px;box-shadow:inset 4px 0 0 #00000030,0 6px 16px #1f165440;transition:transform .2s}
+.book:hover .cv{transform:translateY(-4px) rotate(-1deg)}
+.flag{position:absolute;top:-8px;right:-6px;background:var(--sun);color:var(--sun-ink);font:700 14px var(--display);padding:4px 12px;border-radius:999px;box-shadow:0 2px 0 var(--sun-edge);transform:rotate(4deg)}
+.cv-chuck{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;text-align:center;color:#fff;
+  background:radial-gradient(circle at 50% 30%,#7b3fe4,#2b1670 70%);padding:12px}
+.cv-chuck .c1{font:700 clamp(18px,4vw,26px) var(--display);color:var(--sun)}
+.cv-chuck .c2{font:700 clamp(32px,8vw,52px)/1 var(--display);text-shadow:3px 3px 0 #ff6a4d}
+.cv-chuck .c3{font:600 clamp(15px,3.2vw,20px) var(--display);margin-top:8px}
+.cv-chuck .c4{font:700 13px var(--text);background:var(--sun);color:var(--sun-ink);padding:3px 10px;border-radius:999px;margin-top:12px}
+.book h3{font-size:19px;margin-bottom:4px}
+.meta{margin:0 0 10px;color:var(--muted);font-size:15px;line-height:1.4}
+.buys{display:grid;gap:8px}
+.buy{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:50px;padding:6px 14px;border-radius:12px;text-decoration:none;font:700 16px var(--display);line-height:1.15}
+.buy small{display:block;font:600 12px var(--text);opacity:.8}
+.buy-paperback,.buy-hardcover,.buy-kindle{background:var(--btn);color:var(--btn-ink)}
+.buy-print{background:var(--sun);color:var(--sun-ink)}
+.buy:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.buy[hidden]{display:none}
+.empty{text-align:center;padding:30px 0}
+.empty button{margin-top:10px}
+
+/* Videos */
+.vids{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:640px){.vids{grid-template-columns:repeat(3,1fr)}}
+.vid{position:relative;display:block;border-radius:16px;overflow:hidden;background:var(--night);color:#fff;text-decoration:none;aspect-ratio:4/3}
+.vid img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.vid .play{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:#ff3d3dee;top:-24px}
+.vid .play::after{content:"";position:absolute;left:22px;top:16px;border-left:18px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent}
+.vid .vt{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(#0000,#000b);font:600 17px var(--display)}
+.vid .vt small{display:block;font:600 13px var(--text);color:#e4defc}
+.vid:hover img{opacity:1}
+
+/* About + footer */
+.about{display:grid;gap:10px;max-width:62ch}
+.about p{margin:0}
+.fine{color:var(--muted);font-size:15px}
+footer{margin-top:44px;background:var(--night);color:#e4defc;padding:30px 0 40px}
+footer .wrap{display:grid;gap:14px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 20px}
+footer a{color:#fff;text-underline-offset:3px}
+footer p{margin:0;font-size:14px}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .shelf li{animation:none}
+  .cv,.buy,.pill{transition:none}
+  .book:hover .cv,.buy:hover,.pill:hover{transform:none}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="badge">TL</div>
+<a class="skip" href="#books">Skip to the books</a>
+
+<header class="hero">
+  <div class="wrap">
     <h1>Tiny Learners</h1>
-    <p class="tag">Learning videos and activity books for kids ages 2 to 6, with Ellie the Elephant and Stella the Star.</p>
-  </header>
+    <p class="lede">Activity books and learning videos for kids ages 1 to 8.</p>
+    <div class="hero-cta">
+      <a class="pill" href="#books">Find a book</a>
+      <a class="pill alt" href="#watch">Watch free videos</a>
+    </div>
+    <ul class="shelf" aria-hidden="true"><li><img class="hc" src="img/books/animal-coloring.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"></li><li><img class="hc" src="img/books/stem-maze.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"></li><li><img class="hc" src="img/books/space-coloring.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"></li><li><img class="hc" src="img/books/dino-word-search.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"></li><li><img class="hc" src="img/books/xmas-search-find.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"></li></ul>
+  </div>
+  <div class="ledge"></div>
+</header>
 
-  <h2>Watch free</h2>
-  <a class="btn" href="https://www.youtube.com/channel/UCVewof9gLI_8Oju2egagrQw" target="_blank" rel="noopener">
-    <span class="dot yt">▶</span>
-    <span>Tiny Learners on YouTube<span class="sub">100+ short videos: planets, dinosaurs, animals, safety</span></span>
-    <span class="price">Free</span>
-  </a>
-
-  <h2>Christmas books on Amazon</h2>
-  <a class="btn" href="https://www.amazon.com/dp/B0HRYKTGF6" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>NEW: My First Christmas Search and Find<span class="sub">Ages 3 to 5, 36 hidden picture puzzles</span></span>
-    <span class="price">$9.99</span>
-  </a>
-  <a class="btn" href="https://www.amazon.com/dp/B0HQXY3JF4" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>Christmas Word Search for Kids<span class="sub">Ages 4 to 8, 50 large print puzzles, bonus mazes and coloring</span></span>
-    <span class="price">$9.99</span>
-  </a>
-  <a class="btn" href="https://www.amazon.com/dp/B0HR1RRNCD" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>Christmas Mazes for Kids<span class="sub">Ages 4 to 8, 100 holiday mazes from easy to hard</span></span>
-    <span class="price">$9.99</span>
-  </a>
-  <a class="btn" href="https://www.amazon.com/dp/B0HRRD8DKT" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>My First Christmas Coloring Book<span class="sub">Ages 1 to 4, 50 big and easy holiday pages</span></span>
-    <span class="price">$9.99</span>
-  </a>
-
-  <h2>Paperback books on Amazon</h2>
-  <a class="btn" href="https://www.amazon.com/dp/B0HPSQ8VM6" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>My First Space Coloring Book<span class="sub">Ages 2 to 4, 43 big pages</span></span>
-    <span class="price">$9.99</span>
-  </a>
-  <a class="btn" href="https://www.amazon.com/dp/B0HQ53N3ZX" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>My First Animal Coloring Book<span class="sub">Ages 2 to 4, 50 zoo, farm and ocean animals</span></span>
-    <span class="price">$9.99</span>
-  </a>
-  <a class="btn" href="https://www.amazon.com/dp/B0HPNW81W8" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>My First STEM Maze Book<span class="sub">Ages 3 to 5, 48 space mazes</span></span>
-    <span class="price">$9.99</span>
-  </a>
-  <a class="btn" href="https://www.amazon.com/dp/B0HPRZD5RH" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>My First Space Word Search<span class="sub">Ages 4 to 6, 104 picture puzzles</span></span>
-    <span class="price">$9.99</span>
-  </a>
-  <a class="btn" href="https://www.amazon.com/dp/B0HQ4YXTPR" target="_blank" rel="noopener">
-    <span class="dot amz">a</span>
-    <span>My First Dinosaur Word Search<span class="sub">Ages 4 to 6, 104 picture puzzles</span></span>
-    <span class="price">$9.99</span>
-  </a>
-
-  <h2>Print at home (instant download)</h2>
-  <a class="btn" href="https://www.etsy.com/listing/4619001616" target="_blank" rel="noopener">
-    <span class="dot etsy">E</span>
-    <span>NEW: My First Christmas Search and Find<span class="sub">Ages 3 to 5, 36 puzzles from easy to hard, printable PDF</span></span>
-    <span class="price">$6.99</span>
-  </a>
-  <a class="btn" href="https://www.etsy.com/listing/4610915945" target="_blank" rel="noopener">
-    <span class="dot etsy">E</span>
-    <span>My First Christmas Coloring Book<span class="sub">Ages 1 to 4, 50 big holiday pictures, printable PDF</span></span>
-    <span class="price">$6.99</span>
-  </a>
-  <a class="btn" href="https://www.etsy.com/listing/4610936816" target="_blank" rel="noopener">
-    <span class="dot etsy">E</span>
-    <span>Christmas Word Search for Kids<span class="sub">Ages 4 to 8, 50 large print puzzles plus bonus mazes, printable PDF</span></span>
-    <span class="price">$6.99</span>
-  </a>
-  <a class="btn" href="https://www.etsy.com/listing/4616712001" target="_blank" rel="noopener">
-    <span class="dot etsy">E</span>
-    <span>NEW: Agent Chuck Comic Book, Reply All<span class="sub">Ages 7 and up, 96 page full color space adventure, printable PDF</span></span>
-    <span class="price">$7.99</span>
-  </a>
-  <a class="btn" href="https://tinylearnersbooks.etsy.com" target="_blank" rel="noopener">
-    <span class="dot etsy">E</span>
-    <span>TinyLearnersBooks on Etsy<span class="sub">10 printable books plus a 3-book Christmas bundle</span></span>
-    <span class="price">$6.99</span>
-  </a>
-
-  <footer>Made by Tiny Learners · Springfield, Ohio</footer>
+<div class="bar" role="region" aria-label="Filter books">
+  <div class="wrap">
+    <div class="row" id="kinds"><button type="button" class="chip" data-filter="all" aria-pressed="true">All books</button><button type="button" class="chip" data-filter="t:christmas" aria-pressed="false">Christmas</button><button type="button" class="chip" data-filter="k:coloring" aria-pressed="false">Coloring</button><button type="button" class="chip" data-filter="k:mazes" aria-pressed="false">Mazes</button><button type="button" class="chip" data-filter="k:wordsearch" aria-pressed="false">Word search</button><button type="button" class="chip" data-filter="k:search" aria-pressed="false">Search and find</button><button type="button" class="chip" data-filter="k:comics" aria-pressed="false">Comics</button></div>
+    <div class="row">
+      <span class="rowlabel" id="fmtlabel">Format</span>
+      <div class="seg" role="group" aria-labelledby="fmtlabel" id="fmts">
+        <button type="button" class="chip" data-format="any" aria-pressed="true">Any</button>
+        <button type="button" class="chip" data-format="paperback" aria-pressed="false">Paperback</button>
+        <button type="button" class="chip" data-format="print" aria-pressed="false">Print at home</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<main>
+  <div class="wrap">
+    <section aria-labelledby="bundle-h" style="padding-top:0">
+      <div class="bundle">
+        <div class="stack" aria-hidden="true"><img class="bc" src="img/books/xmas-coloring.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"><img class="bc" src="img/books/xmas-maze.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"><img class="bc" src="img/books/xmas-word-search.jpg" width="480" height="623" alt="" loading="lazy" decoding="async"></div>
+        <div>
+          <h2 id="bundle-h">Christmas Activity Bundle</h2>
+          <p>Coloring, mazes and word search in one download. 3 printable books, 280+ pages, ages 2 to 8.</p>
+        </div>
+        <a class="pill" href="https://www.etsy.com/listing/4613934988" target="_blank" rel="noopener" aria-label="Get the Christmas Activity Bundle printable PDF on Etsy, $12.99">Get the bundle, $12.99</a>
+      </div>
+    </section>
+
+    <section id="books" aria-labelledby="books-h">
+      <div class="sec-h">
+        <h2 id="books-h">All books</h2>
+        <p class="count" id="count" aria-live="polite">10 books</p>
+      </div>
+      <ul class="books" id="list">
+<li class="book" data-kind="comics" data-themes="comics" data-formats="print"><div class="art"><div class="cv cv-chuck" role="img" aria-label="Cover of Agent Chuck: Reply All"><span class="c1">Agent</span><span class="c2">Chuck</span><span class="c3">Reply All</span><span class="c4">Full color comic</span></div><span class="flag">New</span></div><h3>Agent Chuck: Reply All</h3><p class="meta">Ages 7 and up. 96 page full color space adventure.</p><div class="buys"><a class="buy buy-print" href="https://www.etsy.com/listing/4616712001" target="_blank" rel="noopener" aria-label="Printable of Agent Chuck: Reply All on Etsy, $7.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$7.99</span></a></div></li>
+<li class="book" data-kind="search" data-themes="christmas" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/xmas-search-find.jpg" width="480" height="623" alt="Cover of My First Christmas Search and Find" loading="lazy" decoding="async"><span class="flag">New</span></div><h3>My First Christmas Search and Find</h3><p class="meta">Ages 3 to 5. 36 hidden picture puzzles.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HRYKTGF6" target="_blank" rel="noopener" aria-label="Paperback of My First Christmas Search and Find on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4619001616" target="_blank" rel="noopener" aria-label="Printable of My First Christmas Search and Find on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+<li class="book" data-kind="coloring" data-themes="christmas" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/xmas-coloring.jpg" width="480" height="623" alt="Cover of My First Christmas Coloring Book" loading="lazy" decoding="async"></div><h3>My First Christmas Coloring Book</h3><p class="meta">Ages 1 to 4. 50 big and easy holiday pages.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HRRD8DKT" target="_blank" rel="noopener" aria-label="Paperback of My First Christmas Coloring Book on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4610915945" target="_blank" rel="noopener" aria-label="Printable of My First Christmas Coloring Book on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+<li class="book" data-kind="wordsearch" data-themes="christmas" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/xmas-word-search.jpg" width="480" height="623" alt="Cover of Christmas Word Search for Kids" loading="lazy" decoding="async"></div><h3>Christmas Word Search for Kids</h3><p class="meta">Ages 4 to 8. 50 large print puzzles with bonus mazes.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HQXY3JF4" target="_blank" rel="noopener" aria-label="Paperback of Christmas Word Search for Kids on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4610936816" target="_blank" rel="noopener" aria-label="Printable of Christmas Word Search for Kids on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+<li class="book" data-kind="mazes" data-themes="christmas" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/xmas-maze.jpg" width="480" height="623" alt="Cover of Christmas Mazes for Kids" loading="lazy" decoding="async"></div><h3>Christmas Mazes for Kids</h3><p class="meta">Ages 4 to 8. 100 holiday mazes, easy to hard.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HR1RRNCD" target="_blank" rel="noopener" aria-label="Paperback of Christmas Mazes for Kids on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4611716552" target="_blank" rel="noopener" aria-label="Printable of Christmas Mazes for Kids on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+<li class="book" data-kind="coloring" data-themes="space" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/space-coloring.jpg" width="480" height="623" alt="Cover of My First Space Coloring Book" loading="lazy" decoding="async"></div><h3>My First Space Coloring Book</h3><p class="meta">Ages 2 to 4. 43 big pages of planets and rockets.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HPSQ8VM6" target="_blank" rel="noopener" aria-label="Paperback of My First Space Coloring Book on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4610870364" target="_blank" rel="noopener" aria-label="Printable of My First Space Coloring Book on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+<li class="book" data-kind="coloring" data-themes="animals" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/animal-coloring.jpg" width="480" height="623" alt="Cover of My First Animal Coloring Book" loading="lazy" decoding="async"></div><h3>My First Animal Coloring Book</h3><p class="meta">Ages 2 to 4. 50 zoo, farm and ocean animals.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HQ53N3ZX" target="_blank" rel="noopener" aria-label="Paperback of My First Animal Coloring Book on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4610855013" target="_blank" rel="noopener" aria-label="Printable of My First Animal Coloring Book on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+<li class="book" data-kind="mazes" data-themes="space" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/stem-maze.jpg" width="480" height="623" alt="Cover of My First STEM Maze Book" loading="lazy" decoding="async"></div><h3>My First STEM Maze Book</h3><p class="meta">Ages 3 to 5. 48 wide path space mazes.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HPNW81W8" target="_blank" rel="noopener" aria-label="Paperback of My First STEM Maze Book on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4610873516" target="_blank" rel="noopener" aria-label="Printable of My First STEM Maze Book on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+<li class="book" data-kind="wordsearch" data-themes="space" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/space-word-search.jpg" width="480" height="623" alt="Cover of My First Space Word Search" loading="lazy" decoding="async"></div><h3>My First Space Word Search</h3><p class="meta">Ages 4 to 6. 104 picture puzzles.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HPRZD5RH" target="_blank" rel="noopener" aria-label="Paperback of My First Space Word Search on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4610871548" target="_blank" rel="noopener" aria-label="Printable of My First Space Word Search on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+<li class="book" data-kind="wordsearch" data-themes="dinosaurs" data-formats="paperback print"><div class="art"><img class="cv" src="img/books/dino-word-search.jpg" width="480" height="623" alt="Cover of My First Dinosaur Word Search" loading="lazy" decoding="async"></div><h3>My First Dinosaur Word Search</h3><p class="meta">Ages 4 to 6. 104 picture puzzles.</p><div class="buys"><a class="buy buy-paperback" href="https://www.amazon.com/dp/B0HQ4YXTPR" target="_blank" rel="noopener" aria-label="Paperback of My First Dinosaur Word Search on Amazon, $9.99"><span class="bl">Paperback<small>on Amazon</small></span><span class="bp">$9.99</span></a><a class="buy buy-print" href="https://www.etsy.com/listing/4610875376" target="_blank" rel="noopener" aria-label="Printable of My First Dinosaur Word Search on Etsy, $6.99"><span class="bl">Printable<small>PDF on Etsy</small></span><span class="bp">$6.99</span></a></div></li>
+      </ul>
+      <div class="empty" id="empty" hidden>
+        <p>No books match both filters yet.</p>
+        <button type="button" class="chip" id="reset">Show all books</button>
+      </div>
+      <noscript><p>Browse every book on <a href="https://www.amazon.com/stores/Tiny-Learners/author/B0HQF9H95T/allbooks">Amazon</a> or <a href="https://tinylearnersbooks.etsy.com">Etsy</a>.</p></noscript>
+    </section>
+
+    <section id="watch" aria-labelledby="watch-h">
+      <div class="sec-h">
+        <h2 id="watch-h">Watch free</h2>
+        <p class="count"><a href="https://www.youtube.com/channel/UCVewof9gLI_8Oju2egagrQw" target="_blank" rel="noopener">All videos on YouTube</a></p>
+      </div>
+      <div class="vids"><a class="vid" href="https://youtu.be/edr1RIdSxzY" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/edr1RIdSxzY/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play" aria-hidden="true"></span><span class="vt">Peekaboo: Who&#x27;s hiding?<small>Full video, play along</small></span></a><a class="vid" href="https://youtu.be/nVTQbh3vvkM" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/nVTQbh3vvkM/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play" aria-hidden="true"></span><span class="vt">Christmas Word Search<small>Short</small></span></a><a class="vid" href="https://youtu.be/CJjJ49DmZKo" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/CJjJ49DmZKo/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play" aria-hidden="true"></span><span class="vt">Christmas Coloring Book<small>Short</small></span></a></div>
+    </section>
+
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h" style="margin-bottom:12px">Who we are</h2>
+      <div class="about">
+        <p>Tiny Learners is a small family project in Springfield, Ohio. Ellie the Elephant, Stella the Star, Bo the Baby Bot and Pip the Dump Truck teach counting, shapes, space, animals and more in short videos. The books use the same friends.</p>
+        <p>Paperbacks ship from Amazon. Printable PDFs download right after you buy on Etsy, in US Letter and A4, so you print as many copies as you need for home or class.</p>
+        <p class="fine">Illustrations are created with AI assistance, then edited and assembled by us.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Tiny Learners on other sites">
+      <a href="https://www.amazon.com/stores/Tiny-Learners/author/B0HQF9H95T/allbooks" target="_blank" rel="noopener">Amazon author page</a>
+      <a href="https://tinylearnersbooks.etsy.com" target="_blank" rel="noopener">Etsy shop</a>
+      <a href="https://www.youtube.com/channel/UCVewof9gLI_8Oju2egagrQw" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@tinylearnerscreator" target="_blank" rel="noopener">TikTok</a>
+    </nav>
+    <nav aria-label="Site pages">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:tinylearnerscreator@gmail.com">Contact</a>
+    </nav>
+    <p>Made by Tiny Learners in Springfield, Ohio.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.book'));
+  var kindBtns=[].slice.call(document.querySelectorAll('#kinds .chip'));
+  var fmtBtns=[].slice.call(document.querySelectorAll('#fmts .chip'));
+  var count=document.getElementById('count'), empty=document.getElementById('empty');
+  var kind='all', fmt='any';
+  function match(el){
+    var okK = kind==='all' ||
+      (kind.indexOf('k:')===0 && el.dataset.kind===kind.slice(2)) ||
+      (kind.indexOf('t:')===0 && (' '+el.dataset.themes+' ').indexOf(' '+kind.slice(2)+' ')>-1);
+    var okF = fmt==='any' || (' '+el.dataset.formats+' ').indexOf(' '+fmt+' ')>-1;
+    return okK && okF;
+  }
+  function apply(){
+    var n=0;
+    items.forEach(function(el){
+      var show=match(el); el.hidden=!show; if(show) n++;
+      var p=el.querySelector('.buy-paperback'), r=el.querySelector('.buy-print');
+      if(p) p.hidden = fmt==='print'; if(r) r.hidden = fmt==='paperback';
+    });
+    count.textContent = n + (n===1?' book':' books');
+    empty.hidden = n>0;
+  }
+  function pick(btns,btn){btns.forEach(function(b){b.setAttribute('aria-pressed', b===btn?'true':'false')})}
+  kindBtns.forEach(function(b){b.addEventListener('click',function(){kind=b.dataset.filter;pick(kindBtns,b);apply()})});
+  fmtBtns.forEach(function(b){b.addEventListener('click',function(){fmt=b.dataset.format;pick(fmtBtns,b);apply()})});
+  document.getElementById('reset').addEventListener('click',function(){
+    kind='all';fmt='any';pick(kindBtns,kindBtns[0]);pick(fmtBtns,fmtBtns[0]);apply();
+  });
+})();
+</script>
 </body>
 </html>
