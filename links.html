@@ -315,5 +315,17 @@ footer p{margin:0;font-size:14px}
   document.getElementById('pick-x').addEventListener('click',function(){dlg.close?dlg.close():dlg.removeAttribute('open')});
   dlg.addEventListener('click',function(ev){if(ev.target===dlg&&dlg.close)dlg.close()});
 </script>
+<!-- Visitor counts: GoatCounter, no cookies, no personal data. Dashboard: https://tinylearners.goatcounter.com -->
+<script data-goatcounter="https://tinylearners.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click',function(ev){
+  var a=ev.target.closest&&ev.target.closest('a[href^="http"]');
+  if(!a||a.host===location.host||!window.goatcounter||!window.goatcounter.count)return;
+  var li=a.closest('.book'), dl=a.closest('#pick');
+  var t=li?li.querySelector('h3').textContent:(dl?document.getElementById('pick-t').textContent:'');
+  var m=(a.className.match(/buy-(\w+)/)||[])[1]||(a.classList.contains('artlink')?'cover':'link');
+  window.goatcounter.count({path:'out/'+a.host+a.pathname,title:t?t+' · '+m:(a.textContent||'').trim().slice(0,80),event:true});
+});
+</script>
 </body>
 </html>
