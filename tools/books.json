@@ -53,6 +53,14 @@
    "new": true,
    "cover": "agent-chuck",
    "formats": {
+    "paperback": {
+     "url": "https://www.amazon.com/dp/B0HSL2GQD8",
+     "price": "$15.99"
+    },
+    "kindle": {
+     "url": "https://www.amazon.com/dp/B0HSJZ2Z18",
+     "price": "$6.99"
+    },
     "print": {
      "url": "https://www.etsy.com/listing/4616712001",
      "price": "$7.99"
