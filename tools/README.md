@@ -9,3 +9,7 @@ To add or change a book:
 4. Commit links.html, tools/books.json and the cover.
 
 Agent Chuck has no cover file yet. Set "cover" to its slug once img/books/agent-chuck.jpg exists.
+
+QR code for videos:
+- img/qr/home-qr.png and img/qr/home-card.png point to https://tinylearnerscreator.github.io/. Rebuild with python3 tools/make_qr.py (it checks both decode).
+- tools/add_qr.sh IN.mp4 OUT.mp4 [SECONDS] puts the card on the last seconds of a video (default 4 s). Wide videos get it bottom right, tall videos on the left above TikTok's bottom 22 percent.
