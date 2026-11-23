@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build links.html from tools/books.json.
+"""Build index.html and links.html (same page) from tools/books.json.
 Run from the repo root:  python3 tools/build.py
 To add a book: add an entry to tools/books.json (and a cover in img/books/), then rebuild.
 Formats: paperback, hardcover, kindle, print (printable PDF)."""
@@ -74,5 +74,7 @@ out = (TEMPLATE.replace("{{HERO}}", hero).replace("{{CARDS}}", cards).replace("{
        .replace("{{YT}}", SITE["youtube"]).replace("{{TT}}", SITE["tiktok"])
        .replace("{{AMZ}}", SITE["amazon_author"]).replace("{{ETSY}}", SITE["etsy_shop"])
        .replace("{{COUNT}}", str(len(books))))
+# The home page and /links are the same page. /links stays for old bios and videos.
 (root / "links.html").write_text(out)
-print("wrote links.html with", len(books), "books")
+(root / "index.html").write_text(out)
+print("wrote index.html and links.html with", len(books), "books")

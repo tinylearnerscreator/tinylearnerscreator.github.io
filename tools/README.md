@@ -1,6 +1,6 @@
 # Links page tools
 
-links.html is generated. Do not edit it by hand.
+index.html and links.html are generated (the same page). Do not edit either by hand. The footer keeps the Tiny Learners Media app text and Privacy and Terms links, which Google and TikTok app reviews need on the home page.
 
 To add or change a book:
 1. Put the front cover in img/books/<slug>.jpg (480 px wide, JPEG).
