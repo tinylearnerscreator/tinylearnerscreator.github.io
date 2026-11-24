@@ -79,6 +79,10 @@
    "new": true,
    "cover": "xmas-shape-mazes",
    "formats": {
+    "paperback": {
+     "url": "https://www.amazon.com/dp/B0HSST38H7",
+     "price": "$9.99"
+    },
     "print": {
      "url": "https://www.etsy.com/listing/4620714839",
      "price": "$6.99"
