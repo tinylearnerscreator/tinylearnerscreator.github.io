@@ -13,6 +13,17 @@ FORMAT_LABEL = {"paperback": ("Paperback", "Amazon"), "hardcover": ("Hardcover",
 KIND_LABEL = {"coloring": "Coloring", "mazes": "Mazes", "wordsearch": "Word search",
               "search": "Search and find", "comics": "Comics"}
 books = d["books"]
+# Amazon Associates store ID (sanull account, set up 2026-11-26). Every amazon.com link gets this tag.
+AMZ_TAG = "tinylearner08-20"
+def amz(url):
+    if "amazon.com" not in url or "tag=" in url:
+        return url
+    return url + ("&" if "?" in url else "?") + "tag=" + AMZ_TAG
+for b in books:
+    for v in b["formats"].values():
+        v["url"] = amz(v["url"])
+SITE["amazon_author"] = amz(SITE["amazon_author"])
+d["bundle"]["url"] = amz(d["bundle"]["url"])
 cover = {b["slug"]: b.get("cover") for b in books}
 
 from PIL import Image
