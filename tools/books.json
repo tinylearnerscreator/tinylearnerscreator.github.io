@@ -42,6 +42,24 @@
  ],
  "books": [
   {
+   "slug": "dino-maze",
+   "title": "My First Dinosaur Maze Book",
+   "kind": "mazes",
+   "themes": [
+    "dinosaurs"
+   ],
+   "ages": "3 to 5",
+   "detail": "80 mazes and 8 coloring pages",
+   "cover": "dino-maze",
+   "new": true,
+   "formats": {
+    "print": {
+     "url": "https://www.etsy.com/listing/4625852282",
+     "price": "$6.99"
+    }
+   }
+  },
+  {
    "slug": "agent-chuck",
    "title": "Agent Chuck: Reply All",
    "kind": "comics",
