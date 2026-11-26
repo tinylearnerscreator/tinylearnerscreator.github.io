@@ -60,6 +60,26 @@
    }
   },
   {
+   "slug": "agent-chuck-2",
+   "title": "Agent Chuck: Not Today",
+   "kind": "comics",
+   "themes": ["comics"],
+   "ages": "7 and up",
+   "detail": "Book Two. 88 full color comic pages plus 8 activity pages",
+   "cover": "agent-chuck-2",
+   "new": true,
+   "formats": {
+    "kindle": {
+     "url": "https://www.amazon.com/dp/B0HSRCLW4Z",
+     "price": "$6.99"
+    },
+    "print": {
+     "url": "https://www.etsy.com/listing/4622471164",
+     "price": "$8.99"
+    }
+   }
+  },
+  {
    "slug": "agent-chuck",
    "title": "Agent Chuck: Reply All",
    "kind": "comics",
